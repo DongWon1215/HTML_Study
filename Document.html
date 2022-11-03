@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    document.addEventListener('DOMContentLoaded',()=>{
+
+        let div = document.querySelector("#blank");
+        //div.textContent = "테스트용";
+        //div.innerHTML = '<h1>테스트용</h1>';
+        // div.textContent = '<h1>테스트용</h1>';
+
+        // let link = document.querySelector('a');
+        // let href = link.getAttribute('href');
+
+        // link.setAttribute('href','https://google.com');
+        // link.setAttribute('link-Index',1);
+
+        // let index = link.getAttribute('link-Index');
+        // console.log('index',index);
+
+        // let newElement = document.createElement('h2')
+        // newElement.textContent = '동적으로 생성한 h2 태그'
+        // newElement.style.backgroundColor = 'gray'
+        // //newElement.setAttribute('height',100)
+        // newElement.style.height = '100px'
+
+        // //target : 부모 태그 캐스팅
+
+        // let blank = document.querySelector('#blank')
+
+        // blank.appendChild(newElement)
+
+        // let newImg = document.createElement('img')
+
+        // blank.appendChild(newImg);
+
+        // newImg.setAttribute('src','../../../')
+
+        /////////////////////////////////////////////
+
+        cnt = document.querySelector('#cnt');
+        let textarea = document.querySelector('textarea');
+        textarea.addEventListener('keyup',listener);
+
+        const select = document.querySelector('select');
+        const pMsg = document.querySelector('#SelectMsg');
+
+        select.addEventListener('change',(event) => 
+        {
+            const options = event.currentTarget.options;
+            //console.log(options);
+            const index = event.currentTarget.options.selectedIndex;
+
+            let Msg = `select : ${options[index].textContent}`;
+            console.log(Msg);
+
+            
+            const rMsg = document.querySelector('#CheckedMessage');
+            const radios = document.querySelectorAll('input[name=lang]');
+            
+            radios.forEach((radio) => {radio.addEventListener('change', (event) => { const currentRadio = event.currentTarget;
+                if(currentRadio.checked){rMsg.textContent = `checked : ${currentRadio.value}`;}})})
+                pMsg.textContent = Msg;
+        });
+
+    });
+
+    let cnt;
+    let p;
+    const listener = function(event)
+    {
+        const length = event.currentTarget.value.length
+        console.log(event.value);
+        cnt.textContent = `글자 수 : ${length}`;
+    }
+    </script>
+</head>
+<body>
+    <!-- <a href="https://naver.com">네이버</a>
+    <div id = "blank">
+
+    </div> -->
+
+<h3>관심 있는 언어를 선택하세요</h3>
+<input type="radio" name="lang" value = "JAVA">JAVA<br>
+<input type="radio" name="lang" value = "SQL">SQL<br>
+<input type="radio" name="lang" value = "HTML5">HTML5<br>
+<p id = "CheckedMessage"></p>
+
+
+
+<hr>
+
+<select>
+    <option>JAVA</option>
+    <option>SQL</option>
+    <option>HTML5</option>
+    <option>CSS3</option>
+    <option>JavScript</option>
+    </select>
+<p id = "SelectMsg"></p>
+
+
+<h4>키보드 이벤트</h4>
+<textarea></textarea>
+<h4 id = "cnt"></h4>
+
+</body>
+</html>
