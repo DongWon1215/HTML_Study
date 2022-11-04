@@ -82,6 +82,8 @@ document.addEventListener('DOMContentLoaded',() => {
             
             newOption.addEventListener('click',() => {
                 event.preventDefault();
+
+                removeCheck(key);
             })
         }
     })
@@ -95,13 +97,13 @@ function editMemberClose()
 
 function userDelete()
 {
-    localStorage.removeItem();
+    localStorage.removeItem(key);
 }
 
-function removeCheck()
+function removeCheck(key)
 {
-    if(confirm(""))
-        userDelete();
+    if(confirm("정말 삭제하시겠습니까?"))
+        userDelete(key);
 
     else
 
