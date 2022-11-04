@@ -63,9 +63,19 @@
             const rMsg = document.querySelector('#CheckedMessage');
             const radios = document.querySelectorAll('input[name=lang]');
             
-            radios.forEach((radio) => {radio.addEventListener('change', (event) => { const currentRadio = event.currentTarget;
-                if(currentRadio.checked){rMsg.textContent = `checked : ${currentRadio.value}`;}})})
-                pMsg.textContent = Msg;
+            radios.forEach((radio) => 
+            {
+                radio.addEventListener('change', (event) => 
+                { 
+                    const currentRadio = event.currentTarget;
+                
+                    if(currentRadio.checked)
+                    {
+                        rMsg.textContent = `checked : ${currentRadio.value}`;
+                    }
+                })
+            })
+                pMsg.textContent = Msg; 
         });
 
     });

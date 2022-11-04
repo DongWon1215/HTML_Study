@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const loginForm = document.querySelector('form');
+    const userId = document.querySelector('#userId');
+
+    loginForm.addEventListener('submit',(event) => {
+
+        //console.log("전송버튼 클릭됨");
+
+        const userid = document.querySelector('#userId');
+        const pw = document.querySelector('#pw');
+
+        //String search(정규식) => 매칭시 0반환, 매칭 실패시 -1 반환
+        // console.log(userid.value.search(/[a-zA-Z0-9]/i));
+        // console.log(/[a-zA-Z0-9]/.test(userid.value));
+
+        if(/[a-zA-Z0-9]/.test(userid.value))
+        {
+            alert('아이디는 영문 대소문자와 숫자만 입력 가능');
+        }
+
+        //원래 가지고 있던 기능을 없애주는 함수
+        event.preventDefault();
+
+
+    })
+
+    userId.addEventListener('focusin',(event)=>
+    {
+        console.log('포커싱 됨');
+    })
+    userId.addEventListener('focusout',(event)=>
+    {
+        console.log('포커싱 해제됨');
+        const val = event.target.value;
+
+        if(!/[a-zA-Z0-9]/.test(val))
+        alert('영문 대소문자, 숫자만 사용하시오')
+    })
+})
+</script>
+
+</head>
+<body>
+    <h1>로그인 폼</h1>
+    <form action="https://naver.com" method="get">
+        ID <input type="text" name="userId" id="userId">
+        PW <input type="password" name="pw" id="pw">
+        
+        <input type="submit" value="로그인">
+    </form>
+</body>
+</html>
