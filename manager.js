@@ -78,15 +78,32 @@ document.addEventListener('DOMContentLoaded',() => {
             newId.textContent = newUser.id;
             newPassword.textContent = newUser.password;
             newName.textContent = newUser.name;
-            newOption.innerHTML = '<a href = "#">수정</a><a href = "#">삭제</a>';
+            newOption.innerHTML = '<a href = "#">수정</a><a href = "#" id = "userDelete">삭제</a>';
+            
+            newOption.addEventListener('click',() => {
+                event.preventDefault();
+            })
         }
     })
 
-    //newtd.textContent = User.index;
-
 })
 
-// editMemberClose()
-// {
+function editMemberClose()
+{
 
-// }
+}
+
+function userDelete()
+{
+    localStorage.removeItem();
+}
+
+function removeCheck()
+{
+    if(confirm(""))
+        userDelete();
+
+    else
+
+    return false;
+}
